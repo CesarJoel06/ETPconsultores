@@ -1,0 +1,2394 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ETP Consultores | Estudio Contable y Consultoría Tributaria en Lima</title>
+
+  <!-- SEO básico -->
+  <meta name="description" content="ETP Consultores: estudio contable en Lima especializado en contabilidad, asesoría tributaria, consultoría financiera, auditoría, constitución de empresas y nómina. Agenda una consultoría gratuita." />
+  <meta name="keywords" content="estudio contable, contadores, asesoría tributaria, consultoría financiera, auditoría, planilla, constitución de empresas, San Isidro, Lima, Perú" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ETP Consultores | Soluciones Contables y Tributarias" />
+  <meta property="og:description" content="Asesoría financiera integral, cumplimiento tributario y gestión contable para el crecimiento de tu empresa." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts (única dependencia externa permitida) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon (usa el logo del proyecto) -->
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+
+  <style>
+    /* ============================================================
+      ETP CONSULTORES — Página web en un solo archivo (HTML + CSS + JS)
+      - Sin frameworks
+      - Responsive (768px / 480px)
+      - Animaciones suaves (60fps)
+      - Accesibilidad básica
+    ============================================================ */
+
+    :root{
+      --primary: #1a4d8f;
+      --primary-2: #2c5f8d;
+      --accent: #f39c12;
+      --accent-2: #d4af37;
+
+      --text: #2c2c2c;
+      --muted: #5b6573;
+      --ink: #111827;
+
+      --bg: #ffffff;
+      --bg-alt: #f4f4f4;
+      --card: #ffffff;
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 18px;
+
+      --shadow-nav: 0 2px 10px rgba(0,0,0,.10);
+      --shadow-card: 0 4px 15px rgba(0,0,0,.10);
+      --shadow-card-hover: 0 8px 25px rgba(0,0,0,.15);
+      --shadow-btn: 0 4px 6px rgba(0,0,0,.10);
+      --shadow-form: 0 5px 20px rgba(0,0,0,.08);
+
+      --container: 1200px;
+
+      --t-fast: 0.25s;
+      --t-med: 0.35s;
+      --t-slow: 0.5s;
+    }
+
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
+    body{
+      margin: 0;
+      font-family: "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.75;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img{ max-width: 100%; display: block; }
+    a{ color: inherit; text-decoration: none; }
+    button, input, select, textarea{
+      font: inherit;
+      color: inherit;
+    }
+
+    /* Enlace “Saltar al contenido” (accesibilidad) */
+    .skip-link{
+      position: absolute;
+      left: -999px;
+      top: 12px;
+      padding: 10px 14px;
+      background: var(--ink);
+      color: white;
+      border-radius: 10px;
+      z-index: 9999;
+    }
+    .skip-link:focus{ left: 12px; }
+
+    /* Layout base */
+    .container{
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+    @media (max-width: 768px){
+      .container{ padding: 0 22px; }
+    }
+    @media (max-width: 480px){
+      .container{ padding: 0 18px; }
+    }
+
+    /* Tipografía */
+    h1, h2, h3{
+      font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      margin: 0 0 10px 0;
+      letter-spacing: -0.02em;
+      text-shadow: 2px 2px 4px rgba(0,0,0,.08);
+    }
+    h1{ font-size: clamp(34px, 4.2vw, 52px); line-height: 1.12; }
+    h2{ font-size: clamp(26px, 3.2vw, 38px); line-height: 1.2; }
+    h3{ font-size: clamp(18px, 2.1vw, 24px); line-height: 1.25; }
+
+    p{ margin: 0 0 14px 0; color: var(--text); font-size: 16.5px; }
+    .muted{ color: var(--muted); }
+
+    /* ============================================================
+      NAVBAR
+    ============================================================ */
+    header{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(17,24,39,.06);
+      box-shadow: var(--shadow-nav);
+    }
+
+    .nav-wrap{
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand{
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 220px;
+    }
+    .brand-mark{
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, rgba(26,77,143,.12), rgba(243,156,18,.10));
+      border: 1px solid rgba(26,77,143,.12);
+    }
+    .brand-mark img{ width: 34px; height: 34px; object-fit: contain; }
+    .brand-title{
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+    .brand-title strong{
+      font-family: "Poppins", sans-serif;
+      font-weight: 700;
+      letter-spacing: .02em;
+      font-size: 15.5px;
+      color: var(--ink);
+    }
+    .brand-title span{
+      font-size: 12.8px;
+      color: var(--muted);
+      font-weight: 600;
+      letter-spacing: .02em;
+    }
+
+    nav ul{
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .nav-link{
+      position: relative;
+      padding: 10px 10px;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: .02em;
+      color: #1f2937;
+      transition: color var(--t-med) ease;
+      text-transform: uppercase;
+    }
+    .nav-link:hover{ color: var(--primary); }
+    .nav-link.active{ color: var(--primary); }
+
+    .nav-link::after{
+      content: "";
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 6px;
+      height: 2px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--t-med) ease;
+      opacity: .95;
+    }
+    .nav-link:hover::after,
+    .nav-link.active::after{ transform: scaleX(1); }
+
+    .nav-actions{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 220px;
+      justify-content: flex-end;
+    }
+
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 22px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      font-size: 12.7px;
+      transition: transform var(--t-med) ease, box-shadow var(--t-med) ease, background var(--t-med) ease, color var(--t-med) ease, border-color var(--t-med) ease, filter var(--t-med) ease;
+      box-shadow: var(--shadow-btn);
+      will-change: transform;
+      user-select: none;
+    }
+    .btn:hover{ transform: translateY(-2px); box-shadow: 0 14px 28px rgba(0,0,0,.14); }
+    .btn:active{ transform: translateY(0); filter: brightness(.98); }
+    .btn:focus-visible{
+      outline: none;
+      box-shadow: 0 14px 28px rgba(0,0,0,.14), 0 0 0 4px rgba(243,156,18,.32);
+    }
+    .btn-primary{
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #fff;
+    }
+    .btn-primary:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(26,77,143,.22);
+    }
+    .btn-ghost{
+      background: rgba(26,77,143,.06);
+      border-color: rgba(26,77,143,.18);
+      color: var(--primary);
+    }
+    .btn-ghost:hover{
+      transform: translateY(-2px);
+      background: rgba(26,77,143,.10);
+      box-shadow: 0 10px 22px rgba(26,77,143,.14);
+    }
+
+    .hamburger{
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid rgba(17,24,39,.10);
+      background: rgba(255,255,255,.88);
+      box-shadow: var(--shadow-btn);
+      cursor: pointer;
+      transition: transform var(--t-med) ease;
+    }
+    .hamburger:hover{ transform: translateY(-2px); }
+
+    .hamburger span{
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #111827;
+      border-radius: 99px;
+      margin: 0 auto;
+      position: relative;
+      transition: transform var(--t-med) ease, opacity var(--t-med) ease;
+    }
+    .hamburger span::before,
+    .hamburger span::after{
+      content:"";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      border-radius: 99px;
+      background: #111827;
+      transition: transform var(--t-med) ease;
+    }
+    .hamburger span::before{ top: -6px; }
+    .hamburger span::after{ top: 6px; }
+
+    /* Variante “X” para botón de cerrar */
+    .hamburger-close span{ background: transparent; }
+    .hamburger-close span::before{ top: 0; transform: rotate(45deg); }
+    .hamburger-close span::after{ top: 0; transform: rotate(-45deg); }
+
+    /* Drawer móvil */
+    .drawer-overlay{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.42);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--t-slow) ease;
+      z-index: 999;
+    }
+    .drawer{
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: min(340px, 86vw);
+      background: #ffffff;
+      box-shadow: 14px 0 32px rgba(0,0,0,.20);
+      transform: translateX(-105%);
+      transition: transform var(--t-slow) cubic-bezier(.2,.85,.2,1);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      padding: 18px 16px;
+    }
+    .drawer-head{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 6px 12px 6px;
+      border-bottom: 1px solid rgba(17,24,39,.08);
+      margin-bottom: 10px;
+    }
+    .drawer ul{
+      list-style: none;
+      padding: 10px 6px;
+      margin: 0;
+      display: grid;
+      gap: 6px;
+    }
+    .drawer a{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 12px;
+      border-radius: 12px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      font-size: 13px;
+      color: #111827;
+      transition: background var(--t-med) ease, transform var(--t-med) ease, color var(--t-med) ease;
+    }
+    .drawer a:hover{
+      background: rgba(26,77,143,.08);
+      transform: translateX(2px);
+      color: var(--primary);
+    }
+    .drawer .drawer-cta{
+      margin-top: auto;
+      padding: 14px 6px 6px 6px;
+      display: grid;
+      gap: 10px;
+    }
+
+    /* Drawer abierto */
+    body.drawer-open .drawer-overlay{
+      opacity: 1;
+      pointer-events: auto;
+    }
+    body.drawer-open .drawer{
+      transform: translateX(0);
+    }
+
+    /* Responsive navbar */
+    @media (max-width: 980px){
+      nav{ display: none; }
+      .hamburger{ display: inline-grid; place-items: center; }
+      .nav-actions .btn{ display: none; }
+      .brand{ min-width: auto; }
+      .nav-actions{ min-width: auto; }
+    }
+
+    /* Compensación por navbar fijo */
+    main{ padding-top: 76px; }
+
+    /* ============================================================
+      HERO / INICIO
+    ============================================================ */
+    .hero{
+      position: relative;
+      overflow: hidden;
+      padding: 104px 0 78px 0;
+      color: #fff;
+      background: #0b1b33; /* fallback mientras carga la imagen */
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: url("assets/images/hero-alt.webp") center/cover no-repeat;
+      transform: scale(1.03);
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(900px 420px at 20% 25%, rgba(243,156,18,.22), transparent 62%),
+        linear-gradient(120deg, rgba(9,18,34,.78), rgba(26,77,143,.58));
+    }
+    .hero .container{ position: relative; z-index: 1; }
+    .hero-grid{
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.18fr .82fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .hero h1{
+      color: #fff;
+      text-shadow: 2px 2px 10px rgba(0,0,0,.25);
+      margin-bottom: 12px;
+    }
+    .hero p{
+      color: rgba(255,255,255,.92);
+      font-size: 18px;
+      max-width: 60ch;
+      margin-bottom: 22px;
+    }
+
+    .hero-actions{
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 18px 0 0 0;
+    }
+    .btn-hero{
+      padding: 13px 20px;
+      border-radius: 12px;
+      font-size: 12.6px;
+    }
+    
+    .btn-outline-dark{
+      background: rgba(255,255,255,.88);
+      color: var(--primary);
+      border-color: rgba(26,77,143,.18);
+    }
+    .btn-outline-dark:hover{
+      background: #fff;
+      border-color: rgba(26,77,143,.28);
+    }
+
+    /* Botón WhatsApp (cotización / contacto) */
+    .btn-wa{
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #fff;
+      border-color: rgba(255,255,255,.0);
+    }
+    .btn-wa:hover{ filter: saturate(1.02); }
+    .btn-wa svg{ width: 18px; height: 18px; }
+
+    /* Floating WhatsApp */
+    .wa-fab{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 1200;
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #fff;
+      box-shadow: 0 16px 34px rgba(0,0,0,.22);
+      transition: transform var(--t-med) ease, box-shadow var(--t-med) ease;
+    }
+    .wa-fab:hover{ transform: translateY(-3px); box-shadow: 0 22px 46px rgba(0,0,0,.24); }
+    .wa-fab:focus-visible{ outline:none; box-shadow: 0 22px 46px rgba(0,0,0,.24), 0 0 0 4px rgba(26,77,143,.25); }
+    .wa-fab svg{ width: 24px; height: 24px; }
+    @media (max-width: 480px){
+      .wa-fab{ right: 14px; bottom: 14px; width: 50px; height: 50px; }
+    }
+.btn-outline{
+      background: transparent;
+      border-color: rgba(255,255,255,.32);
+      color: #fff;
+    }
+    .btn-outline:hover{
+      background: rgba(255,255,255,.10);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(0,0,0,.20);
+    }
+
+    /* Efecto de título (fade-in + leve desplazamiento; percibido como “typing” sin sacrificar legibilidad) */
+    .hero-title{
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeUp .85s ease forwards;
+    }
+    .hero-subtitle{
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeUp .85s ease .12s forwards;
+    }
+    .hero-actions{ opacity: 0; transform: translateY(10px); animation: fadeUp .85s ease .22s forwards; }
+
+    @keyframes fadeUp{
+      from{ opacity: 0; transform: translateY(10px); }
+      to{ opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-card{
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.20);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.20);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .hero-card h3{
+      color: #fff;
+      margin-bottom: 8px;
+      text-shadow: none;
+    }
+    .hero-bullets{
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .bullet{
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 10px 10px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.10);
+      transition: transform var(--t-med) ease, background var(--t-med) ease;
+      will-change: transform;
+    }
+    .bullet:hover{
+      transform: translateY(-3px);
+      background: rgba(255,255,255,.12);
+    }
+    .bullet svg{
+      flex: 0 0 auto;
+      width: 26px;
+      height: 26px;
+      margin-top: 2px;
+      opacity: .98;
+      transform: scale(1);
+      transition: transform var(--t-med) ease;
+    }
+    .bullet:hover svg{ transform: scale(1.05); }
+    .bullet .btxt{ color: rgba(255,255,255,.92); font-weight: 600; font-size: 14.6px; line-height: 1.45; }
+
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .hero-card{ order: 2; }
+      .hero{ padding: 58px 0 46px 0; }
+    }
+
+    /* ============================================================
+      SECCIONES GENERALES
+    ============================================================ */
+    section{
+      padding: 92px 0;
+    }
+    @media (max-width: 768px){
+      section{ padding: 74px 0; }
+    }
+    @media (max-width: 480px){
+      section{ padding: 62px 0; }
+    }
+    .section-head{
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+    .kicker{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12.5px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--primary);
+    }
+    .kicker i{
+      width: 8px;
+      height: 8px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      display: inline-block;
+    }
+
+    .section-desc{
+      max-width: 76ch;
+      margin-top: 8px;
+      color: var(--muted);
+    }
+
+    .alt{ background: var(--bg-alt); }
+
+    /* Scroll reveal */
+    .reveal{
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .75s ease, transform .75s ease;
+    }
+    .reveal.is-visible{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+      QUIÉNES SOMOS
+    ============================================================ */
+    .about-grid{
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 22px;
+      align-items: start;
+    }
+    .panel{
+      background: var(--card);
+      border: 1px solid rgba(17,24,39,.08);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .mv-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .mv{
+      border-radius: 16px;
+      padding: 16px;
+      background: linear-gradient(180deg, rgba(26,77,143,.06), rgba(243,156,18,.05));
+      border: 1px solid rgba(26,77,143,.10);
+    }
+    .mv strong{
+      display: block;
+      font-family: "Poppins", sans-serif;
+      font-size: 14.5px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+    .mv p{ margin: 0; font-size: 15.5px; }
+
+    .values{
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .value{
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(17,24,39,.08);
+      background: #fff;
+      transition: transform var(--t-med) ease, box-shadow var(--t-med) ease;
+      will-change: transform;
+    }
+    .value:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(17,24,39,.10);
+    }
+    .value svg{
+      width: 26px; height: 26px;
+      color: var(--primary);
+      transform: scale(1);
+      transition: transform var(--t-med) ease;
+    }
+    .value:hover svg{ transform: scale(1.05); }
+    .value span{
+      font-weight: 700;
+      letter-spacing: .01em;
+      font-size: 14.8px;
+      color: #1f2937;
+    }
+
+    .stats{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .stat{
+      border-radius: 16px;
+      padding: 16px 14px;
+      background: #fff;
+      border: 1px solid rgba(17,24,39,.08);
+      box-shadow: 0 10px 24px rgba(17,24,39,.06);
+    }
+    .stat .num{
+      font-family: "Poppins", sans-serif;
+      font-weight: 800;
+      font-size: 26px;
+      letter-spacing: -0.02em;
+      color: var(--primary);
+    }
+    .stat .lab{
+      margin-top: 4px;
+      font-weight: 700;
+      color: var(--muted);
+      font-size: 13.5px;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 980px){
+      .about-grid{ grid-template-columns: 1fr; }
+      .stats{ grid-template-columns: 1fr; }
+      .values{ grid-template-columns: 1fr; }
+      .mv-grid{ grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+      SERVICIOS
+    ============================================================ */
+    .grid-3{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid rgba(17,24,39,.08);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: var(--shadow-card);
+      transition: transform var(--t-med) ease, box-shadow var(--t-med) ease, border-color var(--t-med) ease;
+      will-change: transform;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card:hover{
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .icon{
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(26,77,143,.10), rgba(243,156,18,.10));
+      border: 1px solid rgba(26,77,143,.12);
+      margin-bottom: 14px;
+      transition: transform var(--t-med) ease;
+      will-change: transform;
+    }
+    .card:hover .icon{ transform: scale(1.05); }
+    .icon svg{ width: 30px; height: 30px; color: var(--primary); }
+
+    .card h3{ margin-bottom: 8px; text-shadow: none; }
+    .card p{ margin: 0; color: var(--muted); }
+
+    @media (max-width: 980px){
+      .grid-3{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px){
+      .grid-3{ grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+      PROCESO (Timeline)
+    ============================================================ */
+    .timeline{
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      align-items: stretch;
+    }
+    .timeline::before{
+      content:"";
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      top: 36px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(26,77,143,.30), rgba(243,156,18,.30));
+      border-radius: 99px;
+      z-index: 0;
+    }
+    .step{
+      position: relative;
+      z-index: 1;
+      background: #fff;
+      border: 1px solid rgba(17,24,39,.08);
+      border-radius: var(--radius-lg);
+      padding: 18px 16px;
+      box-shadow: 0 12px 26px rgba(17,24,39,.07);
+      transition: transform var(--t-med) ease, box-shadow var(--t-med) ease;
+      will-change: transform;
+    }
+    .step:hover{
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(17,24,39,.12);
+    }
+    .badge{
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #fff;
+      font-weight: 900;
+      margin-bottom: 12px;
+      box-shadow: 0 12px 22px rgba(26,77,143,.18);
+    }
+    .step .mini{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .step .mini svg{
+      width: 22px;
+      height: 22px;
+      color: var(--accent);
+      transition: transform var(--t-med) ease;
+    }
+    .step:hover .mini svg{ transform: scale(1.05); }
+    .step h3{ font-size: 18px; margin: 0 0 6px 0; text-shadow: none; }
+    .step p{ margin: 0; font-size: 15.3px; color: var(--muted); }
+
+    @media (max-width: 980px){
+      .timeline{ grid-template-columns: 1fr; }
+      .timeline::before{
+        left: 21px;
+        right: auto;
+        top: 16px;
+        bottom: 16px;
+        width: 2px;
+        height: auto;
+      }
+      .badge{ margin-left: 6px; }
+      .step{ padding-left: 18px; }
+    }
+
+    /* ============================================================
+      CONTACTO
+    ============================================================ */
+    .contact-grid{
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .form{
+      background: #fff;
+      border: 1px solid rgba(17,24,39,.08);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: var(--shadow-form);
+    }
+    .form-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .field{ display: flex; flex-direction: column; gap: 6px; }
+    label{
+      font-weight: 800;
+      font-size: 12.8px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #1f2937;
+    }
+    input, select, textarea{
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(17,24,39,.12);
+      outline: none;
+      background: #fff;
+      transition: border-color var(--t-med) ease, box-shadow var(--t-med) ease;
+    }
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(26,77,143,.42);
+      box-shadow: 0 0 0 4px rgba(26,77,143,.12);
+    }
+    textarea{ min-height: 130px; resize: vertical; }
+    .span-2{ grid-column: 1 / -1; }
+    .form-actions{
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: flex-start;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .note{
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .status{
+      display: none;
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(26,77,143,.18);
+      background: rgba(26,77,143,.06);
+      color: #0f2f58;
+      font-weight: 700;
+    }
+    .status.show{ display: block; }
+
+    .contact-info{
+      background: #fff;
+      border: 1px solid rgba(17,24,39,.08);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: var(--shadow-card);
+    }
+    .info-list{
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .info{
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(17,24,39,.08);
+      background: linear-gradient(180deg, rgba(244,244,244,.65), rgba(255,255,255,1));
+      transition: transform var(--t-med) ease;
+    }
+    .info:hover{ transform: translateY(-3px); }
+    .info svg{ width: 22px; height: 22px; color: var(--primary); margin-top: 1px; }
+    .info b{ display: block; font-size: 14.2px; color: #111827; margin-bottom: 2px; }
+    .info span{ display: block; font-size: 14.4px; color: var(--muted); }
+
+    .socials{
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .social{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(17,24,39,.10);
+      background: rgba(26,77,143,.06);
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      font-size: 12.2px;
+      transition: transform var(--t-med) ease, background var(--t-med) ease;
+    }
+    .social:hover{
+      transform: translateY(-2px);
+      background: rgba(26,77,143,.10);
+    }
+    .social svg{ width: 18px; height: 18px; }
+
+    .map{
+      margin-top: 14px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(17,24,39,.10);
+      height: 240px;
+      background: #f3f4f6;
+    }
+    .map iframe{
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    @media (max-width: 980px){
+      .contact-grid{ grid-template-columns: 1fr; }
+      .form-grid{ grid-template-columns: 1fr; }
+      .span-2{ grid-column: auto; }
+    }
+
+    /* ============================================================
+      FOOTER
+    ============================================================ */
+    footer{
+      background: #0b1d33;
+      color: rgba(255,255,255,.86);
+      padding: 48px 0 26px 0;
+    }
+    .footer-grid{
+      display: grid;
+      grid-template-columns: 1.2fr .9fr .9fr .9fr;
+      gap: 16px;
+      align-items: start;
+    }
+    
+    .footer-socials{
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .footer-social{
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.14);
+      color: #fff;
+      transition: transform var(--t-med) ease, background var(--t-med) ease, border-color var(--t-med) ease;
+    }
+    .footer-social:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.14);
+      border-color: rgba(255,255,255,.22);
+    }
+    .footer-social svg{ width: 20px; height: 20px; }.footer-brand{
+      display: grid;
+      gap: 10px;
+    }
+    .footer-brand .brand{
+      gap: 12px;
+    }
+    .footer-brand .brand-title strong{ color: #fff; }
+    .footer-brand p{ color: rgba(255,255,255,.78); margin: 0; }
+
+    .footer-col h3{
+      color: #fff;
+      text-shadow: none;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    .footer-col a{
+      display: inline-block;
+      padding: 6px 0;
+      color: rgba(255,255,255,.78);
+      transition: color var(--t-med) ease;
+    }
+    .footer-col a:hover{ color: #fff; }
+
+    .fineprint{
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 13.5px;
+      color: rgba(255,255,255,.70);
+    }
+
+    @media (max-width: 980px){
+      .footer-grid{ grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px){
+      .footer-grid{ grid-template-columns: 1fr; }
+    }
+
+
+    /* ============================================================
+      IMÁGENES CORPORATIVAS Y COMPONENTES EXTRA
+    ============================================================ */
+    .media-card{
+      margin-top: 16px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(17,24,39,.10);
+      background: #fff;
+      box-shadow: 0 10px 28px rgba(0,0,0,.10);
+    }
+    .media-card img{
+      width: 100%;
+      height: auto;
+      display: block;
+      transform: translateZ(0);
+    }
+    .media-card figcaption{
+      padding: 10px 12px 12px 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .hero-media{
+      margin-top: 14px;
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 18px 36px rgba(0,0,0,.22);
+    }
+    .hero-media img{
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: saturate(1.04) contrast(1.05);
+    }
+    .hero-media::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.35));
+      pointer-events:none;
+    }
+    .hero-media-badge{
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      z-index: 2;
+    }
+    .chip{
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: .6px;
+      text-transform: uppercase;
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(17,24,39,.12);
+      color: #0f172a;
+    }
+
+    .split{
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 18px;
+      align-items: start;
+      margin-top: 18px;
+    }
+    .subhead{
+      font-size: 22px;
+      margin: 0;
+    }
+    .checklist{
+      margin: 12px 0 0 0;
+      padding-left: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+    .checklist li{
+      position: relative;
+      padding-left: 28px;
+      line-height: 1.6;
+      color: var(--text);
+    }
+    .checklist li::before{
+      content:"";
+      position:absolute;
+      left: 0;
+      top: 4px;
+      width: 18px;
+      height: 18px;
+      border-radius: 6px;
+      background: rgba(26,77,143,.12);
+      border: 1px solid rgba(26,77,143,.20);
+      box-shadow: 0 6px 14px rgba(0,0,0,.08);
+    }
+    .checklist li::after{
+      content:"";
+      position:absolute;
+      left: 6px;
+      top: 9px;
+      width: 7px;
+      height: 4px;
+      border-left: 2px solid var(--primary);
+      border-bottom: 2px solid var(--primary);
+      transform: rotate(-45deg);
+    }
+
+    .services-lead .media-card,
+    .process-cta .media-card{ margin-top: 0; }
+
+    .cta-row{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .fineprint{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .contact-photo{
+      margin: 10px 0 14px 0;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(17,24,39,.10);
+      box-shadow: 0 10px 24px rgba(0,0,0,.10);
+    }
+    .contact-photo img{ width:100%; height:auto; display:block; }
+
+    .faq{
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(26,77,143,.04);
+      border: 1px solid rgba(26,77,143,.12);
+      box-shadow: 0 10px 26px rgba(0,0,0,.08);
+    }
+    .faq-grid{
+      margin-top: 10px;
+      display: grid;
+      gap: 10px;
+    }
+    .faq details{
+      border-radius: 14px;
+      background: #fff;
+      border: 1px solid rgba(17,24,39,.10);
+      padding: 12px 12px;
+      box-shadow: 0 8px 18px rgba(0,0,0,.06);
+    }
+    .faq summary{
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--text);
+      list-style: none;
+    }
+    .faq summary::-webkit-details-marker{ display:none; }
+    .faq summary::after{
+      content:"+";
+      float: right;
+      font-weight: 900;
+      color: var(--primary);
+    }
+    .faq details[open] summary::after{ content:"–"; }
+    .faq details p{
+      margin: 10px 0 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 980px){
+      .split{ grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+      BOTÓN VOLVER ARRIBA
+    ============================================================ */
+    .to-top{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      border: 1px solid rgba(17,24,39,.10);
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 14px 30px rgba(0,0,0,.16);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: opacity var(--t-med) ease, transform var(--t-med) ease;
+      z-index: 999;
+    }
+    .to-top.show{
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .to-top:hover{ transform: translateY(-2px); }
+    .to-top svg{ width: 20px; height: 20px; color: var(--primary); }
+
+    /* Reduce motion (accesibilidad) */
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior: auto; }
+      *{ animation: none !important; transition: none !important; }
+      .reveal{ opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- ============================================================
+    HEADER + NAV
+  ============================================================ -->
+  <header>
+    <div class="container">
+      <div class="nav-wrap" aria-label="Barra de navegación">
+        <a class="brand" href="#inicio" aria-label="Ir a Inicio">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="assets/logo.png" alt="Logo ETP Consultores" loading="eager">
+          </span>
+          <span class="brand-title">
+            <strong>ETP CONSULTORES</strong>
+            <span>Consultoría contable y tributaria</span>
+          </span>
+        </a>
+
+        <nav aria-label="Navegación principal">
+          <ul>
+            <li><a class="nav-link" href="#inicio">Inicio</a></li>
+            <li><a class="nav-link" href="#nosotros">Quiénes Somos</a></li>
+            <li><a class="nav-link" href="#servicios">Servicios</a></li>
+            <li><a class="nav-link" href="#proceso">Proceso</a></li>
+            <li><a class="nav-link" href="#contacto">Contacto</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-actions">
+          <a class="btn btn-wa" data-wa-link="nav" href="#" target="_blank" rel="noopener" aria-label="Cotizar por WhatsApp">Cotizar por WhatsApp</a>
+          <button class="hamburger" id="btnHamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="drawer">
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Drawer móvil -->
+  <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+  <aside class="drawer" id="drawer" aria-label="Menú móvil" role="dialog" aria-modal="true">
+    <div class="drawer-head">
+      <div class="brand" aria-label="ETP Consultores">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="assets/logo.png" alt="Logo ETP Consultores" loading="lazy">
+        </span>
+        <span class="brand-title">
+          <strong>ETP CONSULTORES</strong>
+          <span>Confianza y precisión</span>
+        </span>
+      </div>
+      <button class="hamburger hamburger-close" id="btnCloseDrawer" aria-label="Cerrar menú">
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <ul>
+      <li><a href="#inicio" data-drawer-link>Inicio <span aria-hidden="true">›</span></a></li>
+      <li><a href="#nosotros" data-drawer-link>Quiénes Somos <span aria-hidden="true">›</span></a></li>
+      <li><a href="#servicios" data-drawer-link>Servicios <span aria-hidden="true">›</span></a></li>
+      <li><a href="#proceso" data-drawer-link>Proceso <span aria-hidden="true">›</span></a></li>
+      <li><a href="#contacto" data-drawer-link>Contacto <span aria-hidden="true">›</span></a></li>
+    </ul>
+
+    <div class="drawer-cta">
+      <a class="btn btn-primary" href="#contacto" data-drawer-link>Solicitar Consultoría</a>
+      <a class="btn btn-ghost" href="#servicios" data-drawer-link>Ver Servicios</a>
+    </div>
+  </aside>
+
+  <main id="contenido">
+    <!-- ============================================================
+      SECCIÓN 1: HERO / INICIO
+    ============================================================ -->
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <h1 class="hero-title">ETP CONSULTORES - Expertos en Soluciones Contables y Tributarias</h1>
+            <p class="hero-subtitle">Más de <b>15 años</b> brindando asesoría financiera integral para el crecimiento sostenible y el cumplimiento normativo de tu empresa.</p>
+
+            <div class="hero-actions" role="group" aria-label="Llamadas a la acción">
+              <a class="btn btn-wa btn-hero" data-wa-link="hero" href="#" target="_blank" rel="noopener">Cotiza por WhatsApp</a>
+              <a class="btn btn-wa btn-hero" href="#servicios">Conoce Nuestros Servicios</a>
+            </div>
+
+            <p class="muted" style="margin-top:14px; color: rgba(255,255,255,.82);">
+              Atención en Lima (San Isidro) y soporte remoto a nivel nacional. Especialistas en normativa SUNAT y NIIF.
+            </p>
+          </div>
+
+          <div class="hero-card reveal">
+            <h3>Asesoría integral, resultados medibles</h3>
+            <p class="muted" style="color: rgba(255,255,255,.80); margin-bottom: 8px;">
+              Enfoque consultivo con reporting claro y acompañamiento permanente.
+            </p>
+
+            <div class="hero-bullets">
+              <div class="bullet">
+                <!-- Icono: Calculadora -->
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M8 6h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M8.5 10.5h2M13.5 10.5h2M8.5 14h2M13.5 14h2M8.5 17.5h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <div class="btxt"><b>Contabilidad</b> precisa y oportuna para decisiones con evidencia.</div>
+              </div>
+
+              <div class="bullet">
+                <!-- Icono: Gráfico -->
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 19V5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M4 19h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M7 15v-4M12 15V7M17 15v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <div class="btxt"><b>Finanzas</b> y proyecciones para escalar con control.</div>
+              </div>
+
+              <div class="bullet">
+                <!-- Icono: Documento -->
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M7 3h7l3 3v15a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M14 3v4a1 1 0 0 0 1 1h4" stroke="currentColor" stroke-width="2"/>
+                  <path d="M8 12h8M8 16h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <div class="btxt"><b>Tributos</b> y cumplimiento para minimizar riesgos y contingencias.</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+      SECCIÓN 2: QUIÉNES SOMOS
+    ============================================================ -->
+    <section id="nosotros" class="alt">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker"><i></i>Quiénes Somos</div>
+            <h2 class="reveal">Conoce ETP Consultores</h2>
+            <p class="section-desc reveal">
+              Somos un estudio contable especializado en acompañar a empresas y profesionales con un enfoque consultivo, preventivo y orientado a resultados.
+              Combinamos <b>contabilidad</b>, <b>tributación</b> y <b>finanzas</b> para entregar información clara, oportuna y accionable.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-grid">
+          <article class="panel reveal">
+            <h3 style="text-shadow:none;">Nuestra propuesta</h3>
+            <p>
+              En ETP Consultores creemos que la contabilidad no debe ser un trámite, sino una herramienta estratégica. Por ello, trabajamos con procesos
+              estandarizados, criterios técnicos y comunicación transparente, asegurando el cumplimiento de obligaciones y la correcta toma de decisiones.
+              Nuestro equipo multidisciplinario integra contadores y asesores con experiencia en distintos sectores, lo que nos permite diseñar soluciones
+              alineadas a la realidad operativa de cada cliente. Nos caracterizamos por la puntualidad, la confidencialidad y el seguimiento permanente.
+            </p>
+
+
+            <!-- Imagen de equipo / consultoría (optimizada) -->
+            <figure class="media-card reveal">
+              <img src="assets/images/about.webp" width="1200" height="900" loading="lazy"
+                   alt="Equipo de consultoría revisando indicadores financieros" />
+              <figcaption class="muted">Equipo multidisciplinario enfocado en resultados, con estándares técnicos y comunicación transparente.</figcaption>
+            </figure>
+
+            <div class="mv-grid">
+              <div class="mv">
+                <strong>Misión</strong>
+                <p>Optimizar los recursos financieros de nuestros clientes y asegurar el cumplimiento normativo, aportando claridad y control a sus operaciones.</p>
+              </div>
+              <div class="mv">
+                <strong>Visión</strong>
+                <p>Ser referentes en consultoría contable y tributaria en Lima, destacando por excelencia técnica, innovación y cercanía.</p>
+              </div>
+            </div>
+
+            <div class="values">
+              <div class="value">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 2l7 4v6c0 5-3 9-7 10C8 21 5 17 5 12V6l7-4Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M9 12l2 2 4-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Integridad</span>
+              </div>
+              <div class="value">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 3l2.2 5.8 6 .4-4.6 3.5 1.6 5.9-5.2-3.2-5.2 3.2 1.6-5.9-4.6-3.5 6-.4L12 3Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <span>Excelencia</span>
+              </div>
+              <div class="value">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M8 12l2 2 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <span>Compromiso</span>
+              </div>
+              <div class="value">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 2v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M12 16v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M4 12h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M14 12h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M7 7l2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M15 15l2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M17 7l-2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M9 15l-2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span>Innovación</span>
+              </div>
+            </div>
+          </article>
+
+          <aside class="panel reveal">
+            <h3 style="text-shadow:none;">Indicadores de confianza</h3>
+            <p class="muted">Cifras referenciales para destacar experiencia y satisfacción.</p>
+
+            <div class="stats" id="stats">
+              <div class="stat">
+                <div class="num" data-count="500">0</div>
+                <div class="lab">Clientes satisfechos</div>
+              </div>
+              <div class="stat">
+                <div class="num" data-count="15">0</div>
+                <div class="lab">Años de experiencia</div>
+              </div>
+              <div class="stat">
+                <div class="num" data-count="99">0</div>
+                <div class="lab">Tasa de satisfacción</div>
+              </div>
+            </div>
+
+            <div style="margin-top: 16px; border-top: 1px solid rgba(17,24,39,.08); padding-top: 14px;">
+              <h3 style="text-shadow:none; margin-bottom: 8px;">¿Qué puedes esperar?</h3>
+              <p class="muted" style="margin:0;">
+                Reportes claros, comunicación frecuente, trazabilidad documental y recomendaciones accionables para reducir riesgos y mejorar desempeño.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+      SECCIÓN 3: SERVICIOS
+    ============================================================ -->
+    <section id="servicios">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker"><i></i>Servicios</div>
+            <h2 class="reveal">Soluciones completas para tu empresa</h2>
+            <p class="section-desc reveal">
+              Ofrecemos un portafolio integral con ejecución técnica y acompañamiento consultivo. Cada servicio incluye planificación, documentación y seguimiento.
+            </p>
+          </div>
+        </div>
+
+
+        <!-- Bloque visual de apoyo + beneficios -->
+        <div class="services-lead split">
+          <div class="reveal">
+            <h3 class="subhead" style="text-shadow:none;">Qué obtienes con ETP</h3>
+            <p class="muted" style="margin-top:6px;">
+              Servicio contable y tributario diseñado para reducir fricción operativa, anticipar contingencias y mejorar la lectura financiera del negocio.
+            </p>
+            <ul class="checklist" aria-label="Beneficios principales">
+              <li>Documentación ordenada y trazabilidad por periodo.</li>
+              <li>Alertas de vencimientos y soporte para SUNAT.</li>
+              <li>Reportes gerenciales para decisiones oportunas.</li>
+              <li>Confidencialidad, control y seguimiento continuo.</li>
+            </ul>
+          </div>
+
+          <figure class="media-card reveal">
+            <img src="assets/images/services.webp" width="1200" height="900" loading="lazy"
+                 alt="Gráficos y reportes de análisis financiero sobre escritorio" />
+            <figcaption class="muted">Paneles y reportes para control, planeamiento y cumplimiento.</figcaption>
+          </figure>
+        </div>
+
+        <div class="grid-3">
+          <!-- 1 -->
+          <article class="card reveal">
+            <div class="icon" aria-hidden="true">
+              <!-- Icono: Libro contable -->
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M6 4h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2"/>
+                <path d="M8 8h8M8 12h8M8 16h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Contabilidad General</h3>
+            <p>Registro de operaciones, estados financieros, balance general y reportes para control y gestión.</p>
+          </article>
+
+          <!-- 2 -->
+          <article class="card reveal">
+            <div class="icon" aria-hidden="true">
+              <!-- Icono: Documentos fiscales -->
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 3h7l3 3v15a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2"/>
+                <path d="M14 3v4a1 1 0 0 0 1 1h4" stroke="currentColor" stroke-width="2"/>
+                <path d="M8 12h8M8 16h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Asesoría Tributaria</h3>
+            <p>Planificación fiscal, declaraciones de impuestos, optimización tributaria y prevención de contingencias.</p>
+          </article>
+
+          <!-- 3 -->
+          <article class="card reveal">
+            <div class="icon" aria-hidden="true">
+              <!-- Icono: Gráfico de crecimiento -->
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 19V5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M4 19h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M6 14l4-4 3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M18 7h-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Consultoría Financiera</h3>
+            <p>Análisis financiero, proyecciones, evaluación de inversiones y KPIs para decisiones estratégicas.</p>
+          </article>
+
+          <!-- 4 -->
+          <article class="card reveal">
+            <div class="icon" aria-hidden="true">
+              <!-- Icono: Lupa con documento -->
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M10 4h6l3 3v10a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2"/>
+                <path d="M16 4v4a1 1 0 0 0 1 1h4" stroke="currentColor" stroke-width="2"/>
+                <path d="M11 11h6M11 14h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M10.5 20.5a4.5 4.5 0 1 1 3.2-7.7 4.5 4.5 0 0 1-3.2 7.7Z" stroke="currentColor" stroke-width="2"/>
+                <path d="M14.5 18.5l2.4 2.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Auditoría y Control</h3>
+            <p>Auditoría interna, revisión de procesos y control de gestión con recomendaciones concretas.</p>
+          </article>
+
+          <!-- 5 -->
+          <article class="card reveal">
+            <div class="icon" aria-hidden="true">
+              <!-- Icono: Edificio / documento legal -->
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M6 20V8l6-4 6 4v12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M9 11h2M13 11h2M9 14h2M13 14h2M10 20v-4h4v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Constitución de Empresas</h3>
+            <p>Trámites legales, registro y asesoría societaria para iniciar operaciones de forma correcta.</p>
+          </article>
+
+          <!-- 6 -->
+          <article class="card reveal">
+            <div class="icon" aria-hidden="true">
+              <!-- Icono: Personas / planilla -->
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="2"/>
+                <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="2"/>
+                <path d="M2.5 20a5.5 5.5 0 0 1 11 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M12.5 20a5.5 5.5 0 0 1 9 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Nómina y RRHH</h3>
+            <p>Gestión de planillas, cálculo de beneficios sociales, liquidaciones y soporte documental.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+      SECCIÓN 4: PROCESO
+    ============================================================ -->
+    <section id="proceso" class="alt">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker"><i></i>Proceso</div>
+            <h2 class="reveal">Metodología de trabajo clara y eficiente</h2>
+            <p class="section-desc reveal">
+              Un flujo simple y controlado para asegurar entendimiento, ejecución y seguimiento continuo.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <div class="step reveal">
+            <div class="badge">1</div>
+            <div class="mini">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2"/>
+                <path d="M8 7h8M8 11h8M8 15h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <h3>Paso 1: Contacto Inicial</h3>
+            </div>
+            <p>Agenda una cita o consulta gratuita a través de nuestros canales.</p>
+          </div>
+
+          <div class="step reveal">
+            <div class="badge">2</div>
+            <div class="mini">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 19V5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M4 19h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M7 15v-4M12 15V7M17 15v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <h3>Paso 2: Diagnóstico</h3>
+            </div>
+            <p>Evaluamos tu situación contable y necesidades específicas.</p>
+          </div>
+
+          <div class="step reveal">
+            <div class="badge">3</div>
+            <div class="mini">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M7 3h7l3 3v15a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2"/>
+                <path d="M14 3v4a1 1 0 0 0 1 1h4" stroke="currentColor" stroke-width="2"/>
+                <path d="M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M9 16l2 2 4-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <h3>Paso 3: Propuesta Personalizada</h3>
+            </div>
+            <p>Diseñamos un plan de trabajo adaptado a tu empresa.</p>
+          </div>
+
+          <div class="step reveal">
+            <div class="badge">4</div>
+            <div class="mini">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M12 18v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M4 12h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M16 12h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M8.5 8.5l-2-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M17.5 17.5l-2-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M15.5 8.5l2-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M6.5 17.5l2-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              <h3>Paso 4: Implementación</h3>
+            </div>
+            <p>Ejecutamos los servicios con seguimiento constante.</p>
+          </div>
+
+          <div class="step reveal">
+            <div class="badge">5</div>
+            <div class="mini">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 19V5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M4 19h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M6 14l4-4 3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <h3>Paso 5: Seguimiento Continuo</h3>
+            </div>
+            <p>Monitoreo permanente y asesoría personalizada.</p>
+          </div>
+        </div>
+
+        <!-- CTA + imagen de soporte -->
+        <div class="process-cta split">
+          <figure class="media-card reveal">
+            <img src="assets/images/calculator.webp" width="1200" height="900" loading="lazy"
+                 alt="Calculadora y documentos financieros para control y planificación" />
+            <figcaption class="muted">Implementación con seguimiento y reporting periódico.</figcaption>
+          </figure>
+
+          <div class="reveal">
+            <h3 class="subhead" style="text-shadow:none;">Listos para ordenar tu contabilidad</h3>
+            <p class="muted" style="margin-top:6px;">
+              Iniciamos con una consulta gratuita para entender tu situación, priorizar riesgos y proponer un plan de trabajo.
+            </p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#contacto">Agendar Consulta</a>
+              <a class="btn btn-ghost" href="#servicios">Ver Servicios</a>
+            </div>
+            <p class="fineprint">Tiempo de respuesta referencial: 24-48 horas hábiles.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+      SECCIÓN 5: CONTACTO
+    ============================================================ -->
+    <section id="contacto">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker"><i></i>Contacto</div>
+            <h2 class="reveal">Contáctanos Hoy</h2>
+            <p class="section-desc reveal">
+              Cotiza y contáctanos por WhatsApp para respuesta inmediata. Si prefieres, completa el formulario y lo enviaremos al correo del estudio.
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Formulario -->
+          <div class="form reveal">
+            <h3 style="text-shadow:none;">Formulario de consulta</h3>
+            <p class="muted">Campos obligatorios marcados. Al enviar, el mensaje se remite por correo al destinatario configurado. Para atención inmediata, también puedes cotizar por WhatsApp.</p>
+
+            <form id="contactForm" action="server/send.php" method="POST" novalidate>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="nombre">Nombre completo *</label>
+                  <input id="nombre" name="nombre" type="text" placeholder="Ej. César Jhoel" required />
+                </div>
+
+                <div class="field">
+                  <label for="email">Email *</label>
+                  <input id="email" name="email" type="email" placeholder="correo@empresa.com" required />
+                </div>
+
+                <div class="field">
+                  <label for="telefono">Teléfono</label>
+                  <input id="telefono" name="telefono" type="tel" placeholder="+51 9xx xxx xxx" />
+                </div>
+
+                <div class="field">
+                  <label for="empresa">Empresa</label>
+                  <input id="empresa" name="empresa" type="text" placeholder="Nombre de tu empresa" />
+                </div>
+
+                <div class="field span-2">
+                  <label for="servicio">Servicio de interés</label>
+                  <select id="servicio" name="servicio">
+                    <option value="Contabilidad General">Contabilidad General</option>
+                    <option value="Asesoría Tributaria">Asesoría Tributaria</option>
+                    <option value="Consultoría Financiera">Consultoría Financiera</option>
+                    <option value="Auditoría y Control">Auditoría y Control</option>
+                    <option value="Constitución de Empresas">Constitución de Empresas</option>
+                    <option value="Nómina y RRHH">Nómina y RRHH</option>
+                  </select>
+                </div>
+
+                <div class="field span-2">
+                  <label for="mensaje">Mensaje *</label>
+                  <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos brevemente tu necesidad..." required></textarea>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Enviar por correo</button>
+                <a class="btn btn-outline-dark" data-wa-link="form" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+                <button class="btn btn-ghost" type="reset">Limpiar</button>
+              </div>
+
+              <div class="status" id="formStatus" role="status" aria-live="polite"></div>
+              <p class="note">Este proyecto incluye un handler en <b>server/send.php</b> (PHP) para envío de correo. Si tu hosting no soporta <i>mail()</i>, puedes usar un servicio externo (Formspree) o integrar un backend propio.</p>
+            </form>
+          </div>
+
+          <!-- Info + redes + mapa -->
+          <aside class="contact-info reveal">
+            <h3 style="text-shadow:none;">Información de contacto</h3>
+
+            <div class="contact-photo" aria-hidden="false">
+              <img src="assets/images/contact.webp" width="900" height="1200" loading="lazy"
+                   alt="Fachada de oficina corporativa, imagen referencial" />
+            </div>
+
+            <div class="info-list">
+              <div class="info">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 22s7-5.2 7-12a7 7 0 0 0-14 0c0 6.8 7 12 7 12Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M12 11.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <div>
+                  <b>Dirección</b>
+                  <span>Av. Principal 1234, Oficina 501, San Isidro, Lima, Perú</span>
+                </div>
+              </div>
+
+              <div class="info">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M8 7h8M8 11h8M8 15h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <div>
+                  <b>Teléfonos</b>
+                  <span>Principal: +51 987 654 321<br/>Secundario: +51 123 456 789</span>
+                </div>
+              </div>
+
+              <div class="info">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div>
+                  <b>Emails</b>
+                  <span>contacto@etpconsultores.com<br/>ventas@etpconsultores.com</span>
+                </div>
+              </div>
+
+              <div class="info">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <div>
+                  <b>Horario</b>
+                  <span>Lun - Vie: 9:00 AM - 6:00 PM<br/>Sáb: 9:00 AM - 1:00 PM</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="socials" aria-label="Redes sociales">
+              <a class="social" data-social="linkedin" href="#" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 4h4v16H4V4Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M10 10h4v10h-4V10Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M14 11c0-1.7 1.3-3 3-3s3 1.3 3 3v9h-4v-8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M6 7.5v0" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+                LinkedIn
+              </a>
+
+              <a class="social" data-social="facebook" href="#" target="_blank" rel="noopener" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M14 8h2V5h-2c-2 0-4 2-4 4v3H8v3h2v7h3v-7h3l1-3h-4V9c0-.6.4-1 1-1Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+                Facebook
+              </a>
+
+              <a class="social" data-social="whatsapp" data-wa-link="contact" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M20 12a8 8 0 0 1-12.2 6.8L4 20l1.4-3.7A8 8 0 1 1 20 12Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M9.5 10.5c.6 2.2 2.8 4.4 5 5l1.5-1 2 1-1 2c-1.6.4-3.6-.2-5.6-2.2S8.9 11 9.3 9.4l2-.9 1 2-1.1 1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                WhatsApp
+              </a>
+            </div>
+
+            <!-- Mapa (opcional). Puedes cambiar el src por tu ubicación real -->
+            <div class="map" aria-label="Mapa de referencia">
+              <iframe
+                title="Mapa de referencia - San Isidro"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=San%20Isidro%20Lima%20Peru&output=embed">
+              </iframe>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+
+      <!-- Preguntas frecuentes -->
+      <div class="faq reveal" aria-label="Preguntas frecuentes">
+        <h3 class="subhead" style="text-shadow:none;">Preguntas frecuentes</h3>
+        <div class="faq-grid">
+          <details>
+            <summary>¿Atienden solo en Lima o también a nivel nacional?</summary>
+            <p>Atendemos presencialmente en Lima (San Isidro) y brindamos soporte remoto a nivel nacional, coordinando por videollamada, correo y WhatsApp.</p>
+          </details>
+          <details>
+            <summary>¿Qué información necesito para iniciar?</summary>
+            <p>En una primera reunión identificamos tu régimen, actividad, volumen de operaciones y documentación disponible. Con eso preparamos un diagnóstico y plan de regularización o mejora.</p>
+          </details>
+          <details>
+            <summary>¿Cómo manejan la confidencialidad?</summary>
+            <p>Trabajamos con protocolos de acceso y manejo de documentación. Podemos firmar acuerdos de confidencialidad (NDA) si tu empresa lo requiere.</p>
+          </details>
+          <details>
+            <summary>¿Pueden ayudar con SUNAT y fiscalizaciones?</summary>
+            <p>Sí. Brindamos asesoría para declaraciones, rectificatorias, requerimientos y prevención de contingencias mediante control documental y sustentos.</p>
+          </details>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================
+      SECCIÓN 6: FOOTER
+    ============================================================ -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="brand" aria-label="ETP Consultores">
+              <span class="brand-mark" aria-hidden="true">
+                <img src="assets/logo.png" alt="Logo ETP Consultores" loading="lazy">
+              </span>
+              <span class="brand-title">
+                <strong>ETP CONSULTORES</strong>
+                <span style="color: rgba(255,255,255,.70);">Confianza y profesionalismo</span>
+              </span>
+            </div>
+            <p>Asesoría contable, tributaria y financiera para empresas que necesitan control, cumplimiento y crecimiento.</p>
+            <p class="muted" style="color: rgba(255,255,255,.70); margin:0;">RUC: 20123456789 (ejemplo)</p>
+
+            <div class="footer-socials" aria-label="Redes sociales">
+              <a class="footer-social" data-social="linkedin" href="#" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 4h4v16H4V4Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M10 10h4v10h-4V10Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M14 11c0-1.7 1.3-3 3-3s3 1.3 3 3v9h-4v-8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M6 7.5v0" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+              </a>
+              <a class="footer-social" data-social="facebook" href="#" target="_blank" rel="noopener" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M14 8h2V5h-2c-2 0-4 2-4 4v3H8v3h2v7h3v-7h3l1-3h-4V9c0-.6.4-1 1-1Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <a class="footer-social" data-social="whatsapp" data-wa-link="footer" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M20 12a8 8 0 0 1-12.2 6.8L4 20l1.4-3.7A8 8 0 1 1 20 12Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M9.5 10.5c.6 2.2 2.8 4.4 5 5l1.5-1 2 1-1 2c-1.6.4-3.6-.2-5.6-2.2S8.9 11 9.3 9.4l2-.9 1 2-1.1 1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h3>Enlaces rápidos</h3>
+            <a href="#inicio">Inicio</a><br/>
+            <a href="#nosotros">Quiénes Somos</a><br/>
+            <a href="#servicios">Servicios</a><br/>
+            <a href="#proceso">Proceso</a><br/>
+            <a href="#contacto">Contacto</a>
+          </div>
+
+          <div class="footer-col">
+            <h3>Servicios</h3>
+            <a href="#servicios">Contabilidad General</a><br/>
+            <a href="#servicios">Asesoría Tributaria</a><br/>
+            <a href="#servicios">Consultoría Financiera</a><br/>
+            <a href="#servicios">Nómina y RRHH</a>
+          </div>
+
+          <div class="footer-col">
+            <h3>Legal</h3>
+            <a href="#" aria-label="Política de privacidad (enlace de prueba)">Política de privacidad</a><br/>
+            <a href="#" aria-label="Términos y condiciones (enlace de prueba)">Términos y condiciones</a><br/>
+            <a href="#contacto">Soporte</a>
+          </div>
+        </div>
+
+        <div class="fineprint">
+          <span>© 2026 ETP Consultores. Todos los derechos reservados.</span>
+          <span>Hecho con HTML5 + CSS3 (sin frameworks).</span>
+        </div>
+      </div>
+    </footer>
+
+  <a class="wa-fab" data-wa-link="fab" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M20 12a8 8 0 0 1-12.2 6.8L4 20l1.4-3.7A8 8 0 1 1 20 12Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M9.5 10.5c.6 2.2 2.8 4.4 5 5l1.5-1 2 1-1 2c-1.6.4-3.6-.2-5.6-2.2S8.9 11 9.3 9.4l2-.9 1 2-1.1 1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+
+  </main>
+
+  <!-- Botón volver arriba -->
+  <button class="to-top" id="toTop" aria-label="Volver arriba">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 5l7 7H5l7-7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M12 12v7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+
+  <script>
+    /* ============================================================
+      JS ligero para:
+      - Menú móvil (drawer con slide-in)
+      - Navegación activa por sección
+      - Scroll reveal (IntersectionObserver)
+      - Contadores animados
+      - Botón volver arriba
+      - Validación básica del formulario (demo)
+    ============================================================ */
+
+    (function(){
+      const body = document.body;
+
+      // Drawer móvil
+      const btnHamburger = document.getElementById('btnHamburger');
+      const btnCloseDrawer = document.getElementById('btnCloseDrawer');
+      const overlay = document.getElementById('drawerOverlay');
+      const drawerLinks = document.querySelectorAll('[data-drawer-link]');
+
+      function openDrawer(){
+        body.classList.add('drawer-open');
+        btnHamburger?.setAttribute('aria-expanded', 'true');
+      }
+      function closeDrawer(){
+        body.classList.remove('drawer-open');
+        btnHamburger?.setAttribute('aria-expanded', 'false');
+      }
+
+      btnHamburger?.addEventListener('click', openDrawer);
+      btnCloseDrawer?.addEventListener('click', closeDrawer);
+      overlay?.addEventListener('click', closeDrawer);
+      drawerLinks.forEach(a => a.addEventListener('click', closeDrawer));
+      window.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeDrawer(); });
+
+      // Scroll reveal
+      const reveals = document.querySelectorAll('.reveal');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      reveals.forEach(el => io.observe(el));
+
+      // Navegación activa
+      const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+      const sections = ['inicio','nosotros','servicios','proceso','contacto']
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
+
+      const navIO = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+          }
+        });
+      }, { rootMargin: '-35% 0px -55% 0px', threshold: 0.02 });
+
+      sections.forEach(sec => navIO.observe(sec));
+
+      // Botón volver arriba
+      const toTop = document.getElementById('toTop');
+      window.addEventListener('scroll', () => {
+        if(window.scrollY > 520) toTop.classList.add('show');
+        else toTop.classList.remove('show');
+      }, { passive: true });
+
+      toTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      // Contadores (inician cuando el bloque es visible)
+      const stats = document.getElementById('stats');
+      const countEls = stats ? stats.querySelectorAll('[data-count]') : [];
+      let counted = false;
+
+      function animateCount(el, target){
+        const duration = 1100;
+        const start = performance.now();
+        const from = 0;
+        const to = target;
+
+        function tick(now){
+          const t = Math.min(1, (now - start) / duration);
+          const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
+          const val = Math.round(from + (to - from) * eased);
+
+          // Formato simple: +500 / 99%
+          if(target === 99){
+            el.textContent = val + '%';
+          }else if(target >= 100){
+            el.textContent = '+' + val;
+          }else{
+            el.textContent = '+' + val;
+          }
+
+          if(t < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+
+      if(stats){
+        const statsIO = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if(entry.isIntersecting && !counted){
+              counted = true;
+              countEls.forEach(el => {
+                const target = parseInt(el.getAttribute('data-count'), 10);
+                animateCount(el, target);
+              });
+              statsIO.disconnect();
+            }
+          });
+        }, { threshold: 0.25 });
+        statsIO.observe(stats);
+      }
+
+      // Configuración (edita aquí tus enlaces reales)
+      const CONFIG = {
+        whatsappPhone: '51987654321', // +51 987 654 321 (ejemplo). Reemplaza por tu número real.
+        emailTo: 'contacto@etpconsultores.com', // destinatario para fallback mailto y texto de ayuda
+        social: {
+          linkedin: 'https://www.linkedin.com/company/etp-consultores/', // reemplazar
+          facebook: 'https://www.facebook.com/etpconsultores/', // reemplazar
+        }
+      };
+
+      function buildWhatsAppUrl(message){
+        const base = 'https://wa.me/' + CONFIG.whatsappPhone;
+        return base + '?text=' + encodeURIComponent(message);
+      }
+
+      // Inyecta links de redes sociales (listos para reemplazar)
+      const socialLinks = document.querySelectorAll('[data-social]');
+      socialLinks.forEach(a => {
+        const key = a.getAttribute('data-social');
+        if(key === 'whatsapp') return; // se maneja por data-wa-link
+        const url = CONFIG.social[key];
+        if(url) a.setAttribute('href', url);
+      });
+
+      // Links WhatsApp (CTA nav/hero/form/fab/contact)
+      function messageByContext(ctx){
+        switch(ctx){
+          case 'nav':
+          case 'hero':
+            return 'Hola, soy cliente potencial. Quisiera una consultoría contable/tributaria. Vengo desde la web de ETP Consultores (Lima).';
+          case 'contact':
+          case 'fab':
+          case 'footer':
+            return 'Hola, quisiera información sobre sus servicios contables en Lima. ¿Podemos agendar una consulta?';
+          case 'form':
+            return 'Hola, quisiera una cotización. Vengo desde la web de ETP Consultores.';
+          default:
+            return 'Hola, quisiera información. Vengo desde la web de ETP Consultores.';
+        }
+      }
+
+      const waLinks = document.querySelectorAll('[data-wa-link]');
+
+      function refreshWhatsAppLinks(){
+        waLinks.forEach(a => {
+          const ctx = a.getAttribute('data-wa-link') || '';
+          let msg = messageByContext(ctx);
+
+          // Si es el botón de WhatsApp del formulario, agrega datos si están disponibles
+          if(ctx === 'form'){
+            const form = document.getElementById('contactForm');
+            if(form){
+              const nombre = (form.querySelector('#nombre')?.value || '').trim();
+              const email = (form.querySelector('#email')?.value || '').trim();
+              const telefono = (form.querySelector('#telefono')?.value || '').trim();
+              const empresa = (form.querySelector('#empresa')?.value || '').trim();
+              const servicio = (form.querySelector('#servicio')?.value || '').trim();
+              const mensaje = (form.querySelector('#mensaje')?.value || '').trim();
+
+              const parts = [];
+              if(nombre) parts.push('Nombre: ' + nombre);
+              if(email) parts.push('Email: ' + email);
+              if(telefono) parts.push('Teléfono: ' + telefono);
+              if(empresa) parts.push('Empresa: ' + empresa);
+              if(servicio) parts.push('Servicio: ' + servicio);
+              if(mensaje) parts.push('Mensaje: ' + mensaje);
+
+              if(parts.length){
+                msg = 'Hola, quisiera una cotización/asesoría. Vengo desde la web de ETP Consultores (Lima).' + '\n\n' + parts.join('\n');
+              }
+            }
+          }
+
+          a.setAttribute('href', buildWhatsAppUrl(msg));
+        });
+      }
+      refreshWhatsAppLinks();
+
+      // Formulario (envío real: PHP en server/send.php + fallback mailto)
+      const form = document.getElementById('contactForm');
+      const status = document.getElementById('formStatus');
+      const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
+
+      function showStatusHTML(html){
+        if(!status) return;
+        status.innerHTML = html;
+        status.classList.add('show');
+        window.setTimeout(() => status.classList.remove('show'), 7000);
+      }
+
+      function toMailto(data){
+        const subject = 'Consulta web — ETP Consultores (Lima)';
+        const bodyLines = [
+          'Nueva consulta desde la web:',
+          '',
+          'Nombre: ' + (data.get('nombre') || ''),
+          'Email: ' + (data.get('email') || ''),
+          'Teléfono: ' + (data.get('telefono') || ''),
+          'Empresa: ' + (data.get('empresa') || ''),
+          'Servicio: ' + (data.get('servicio') || ''),
+          '',
+          'Mensaje:',
+          (data.get('mensaje') || ''),
+          '',
+          '— Enviado desde el formulario web'
+        ];
+        return 'mailto:' + encodeURIComponent(CONFIG.emailTo)
+          + '?subject=' + encodeURIComponent(subject)
+          + '&body=' + encodeURIComponent(bodyLines.join('\n'));
+      }
+
+      form?.addEventListener('input', () => {
+        // Actualiza el link de WhatsApp del formulario en tiempo real
+        refreshWhatsAppLinks();
+      }, { passive: true });
+
+      form?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+
+        const nombre = (data.get('nombre') || '').toString().trim();
+        const email = (data.get('email') || '').toString().trim();
+        const mensaje = (data.get('mensaje') || '').toString().trim();
+
+        if(!nombre || !email || !mensaje){
+          showStatusHTML('Por favor completa los campos obligatorios: <b>Nombre</b>, <b>Email</b> y <b>Mensaje</b>.');
+          return;
+        }
+
+        const okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        if(!okEmail){
+          showStatusHTML('Por favor ingresa un <b>email válido</b>.');
+          return;
+        }
+
+        // UX
+        if(submitBtn){
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Enviando...';
+        }
+
+        try{
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          const payload = await res.json().catch(() => ({}));
+
+          if(res.ok && (payload.ok === true || Object.keys(payload).length === 0)){
+            showStatusHTML('Listo. Tu consulta fue enviada por correo. Para respuesta inmediata, también puedes <a href="' + buildWhatsAppUrl('Hola, acabo de enviar el formulario desde la web. ¿Podemos ver mi caso?') + '" target="_blank" rel="noopener"><b>continuar por WhatsApp</b></a>.');
+            form.reset();
+            refreshWhatsAppLinks();
+          } else {
+            throw new Error(payload.error || 'No se pudo enviar el correo.');
+          }
+        } catch(err){
+          // Fallback: mailto
+          const mailto = toMailto(data);
+          showStatusHTML('No se pudo enviar automáticamente desde este hosting. Se abrirá tu correo para enviar el mensaje a <b>' + CONFIG.emailTo + '</b>. Si prefieres, <a href="' + buildWhatsAppUrl('Hola, no pude enviar el formulario por correo desde la web. Quisiera cotizar/consultar.') + '" target="_blank" rel="noopener"><b>escríbenos por WhatsApp</b></a>.');
+          window.location.href = mailto;
+        } finally {
+          if(submitBtn){
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Enviar por correo';
+          }
+        }
+      });
+
+    })();
+  </script>
+</body>
+</html>
